@@ -1,0 +1,21 @@
+{
+  "name": "alura-timer",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "author": {
+    "name": "José Bruno",
+    "email": "josebrunocampanholi@gmail.com"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^23.1.0"
+  },
+  "dependencies": {
+    "jsonfile-promised": "^0.0.1",
+    "moment": "^2.29.4",
+    "node-fetch": "^3.3.0"
+  }
+}

@@ -1,0 +1,106 @@
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/Roboto/Roboto-Light.ttf) format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  background: url(../img/texture.png) top left repeat;
+}
+.titulo {
+  color: #5271ff;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 4em;
+  position: relative;
+  top: 20px;
+}
+.timer {
+  width: 530px;
+  margin: 0 auto;
+  height: 150px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.relogio {
+  display: inline-block;
+  width: 75%;
+  text-align: center;
+  height: 75%;
+  vertical-align: top;
+  background-color: #879cff;
+}
+
+.controles {
+  width: 25%;
+  height: 75%;
+  display: inline-block;
+  background-color: #7d94ff;
+}
+
+.botao-play {
+  width: 65%;
+  padding-top: 13px;
+  margin: 0 auto;
+  display: block;
+}
+.tempo {
+  font-size: 5.5em;
+  color: #ffffff;
+  display: inline-block;
+  padding-top: 8px;
+}
+
+.curso-container {
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  margin-top: 2px;
+  background-color: #97a7f2;
+}
+
+.curso {
+  display: inline-block;
+  font-size: 1.3em;
+  font-style: italic;
+  color: #ffffff;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.botoes {
+  width: 30px;
+  display: block;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding-top: 20px;
+}
+
+.info-button {
+  width: 25px;
+  cursor: pointer;
+}
+
+#link-sobre {
+  position: absolute;
+  height: 25px;
+  right: 5px;
+  top: 5px;
+  z-index: 1;
+}
