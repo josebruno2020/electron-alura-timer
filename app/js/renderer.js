@@ -31,8 +31,24 @@ playButton.addEventListener("click", () => {
   }
 });
 
+//evento -> mudar de curso atraves do tray menu
 ipcRenderer.on("change-course", async (event, course) => {
   curso.textContent = course;
   const dataTime = await getData(course);
   time.textContent = dataTime?.tempo ?? "00:00:00";
+});
+
+const buttonPlus = document.querySelector(".botao-adicionar");
+const input = document.querySelector(".campo-adicionar");
+//adicionar curso
+buttonPlus.addEventListener("click", () => {
+  const newCourse = input.value;
+  if (!newCourse.length) return;
+  curso.textContent = newCourse;
+  time.textContent = "00:00:00";
+
+  input.value = "";
+
+  //atualizar tray menu
+  ipcRenderer.send("new-course", newCourse);
 });

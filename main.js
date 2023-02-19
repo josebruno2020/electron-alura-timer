@@ -1,13 +1,13 @@
 const { app, BrowserWindow, ipcMain, Tray, Menu } = require("electron");
-const path = require("path");
 const data = require("./src/data");
 const template = require("./src/template");
 
 let tray;
-let win;
+let mainWindow;
+let aboutWin;
 
 const createWindow = () => {
-  win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -16,13 +16,13 @@ const createWindow = () => {
     },
   });
 
-  win.loadFile(`${__dirname}/app/index.html`);
+  mainWindow.loadFile(`${__dirname}/app/index.html`);
 };
 
 app.whenReady().then(() => {
   createWindow();
   tray = new Tray(`${__dirname}/app/img/icon.png`);
-  const trayMenu = template.trayTemplate(win);
+  const trayMenu = template.trayTemplate(mainWindow);
   tray.setContextMenu(trayMenu);
 });
 
@@ -31,8 +31,6 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
-
-let aboutWin;
 
 ipcMain.on("open-about", () => {
   if (!aboutWin) {
@@ -63,4 +61,13 @@ ipcMain.on("about-close", () => {
 
 ipcMain.on("pause", async (e, curso, timePass) => {
   data.save(curso, timePass);
+});
+
+ipcMain.on("new-course", (event, newCourse) => {
+  const newMenu = template.addCourse({
+    newCourse,
+    window: mainWindow,
+    isChecked: true,
+  });
+  tray.setContextMenu(newMenu);
 });
